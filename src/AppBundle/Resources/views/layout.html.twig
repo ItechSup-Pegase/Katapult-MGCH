@@ -9,6 +9,9 @@
 
 <link rel="stylesheet" href="{{ asset("/bundles/app/css/template.css") }}">
 <link rel="stylesheet" href="{{ asset("/bundles/app/css/style.css") }}">
+<link rel="stylesheet" href="{{ asset("/bundles/app/css/datepicker.css") }}">
+
+
 
 
 {% endblock %}
@@ -66,4 +69,19 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Javascript pour DatePicker-->
+    <script type="text/javascript" src="{{ asset('bundles/app/js/bootstrap-datepicker.js') }}"></script>
+    <script type="text/javascript"> 
+       $(".datepicker").datepicker({ 
+           autoclose: true, 
+           todayHighlight: true, 
+           orientation: "top", 
+           isRTL: false, 
+           language: "FR" , 
+           weekStart:1 , 
+           format : "dd/mm/yyyy"           
+       }).on('changeDate',function(){
+           $(".datepicker").datepicker('hide')
+       });
+    </script> 
 {% endblock %}

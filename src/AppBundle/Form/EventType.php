@@ -15,9 +15,7 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
-            ->add('addresses')
-            ->add('students')
+            ->add('date', 'date',array('required' => false, 'widget' =>'single_text','format' =>'dd/MM/yyyy', 'attr'=>  array('class'=>'datepicker')))
             ->add('teachers')
             ->add('formations', null, array('property'=>'name'))
         ;
