@@ -229,26 +229,6 @@ class StudentController extends Controller
     }
 
     /**
-     * Deletes a Student entity.
-     *
-     * @Route("/{id}", name="student_index_delete")
-     * @Method("DELETE")
-     * @Template("AppBundle:Student:index.html.twig")
-     */
-    public function deleteIndexAction($id)
-    {     
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AppBundle:Student')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Student entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-    }
-    
-    /**
      * Creates a form to delete a Student entity by id.
      *
      * @param mixed $id The entity id
