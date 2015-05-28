@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use AppBundle\Form\AddressType;
 
 class EventType extends AbstractType
 {
@@ -16,6 +17,7 @@ class EventType extends AbstractType
     {
         $builder
             ->add('date', 'date',array('required' => false, 'widget' =>'single_text','format' =>'dd/MM/yyyy', 'attr'=>  array('class'=>'datepicker')))
+            ->add('address',  new AddressType())
             ->add('teachers')
             ->add('formations', null, array('property'=>'name'))
         ;

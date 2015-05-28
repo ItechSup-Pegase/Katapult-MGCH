@@ -31,10 +31,10 @@ class Event
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Address",inversedBy="events")
+     * @ORM\ManyToOne(targetEntity="Address",inversedBy="events", cascade={"persist"})
      * @ORM\JoinColumn(name="address_id" , referencedColumnName="id")
      */
-    private $addresses;
+    private $address;
     
     /**
      * @var ArrayCollection
