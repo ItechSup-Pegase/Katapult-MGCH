@@ -1,0 +1,53 @@
+{% extends "AppBundle:Event:layout.html.twig" %}
+
+{% block content -%}
+    <h1>Formation</h1>
+    
+    <table class="table table-striped ">
+        <tbody>
+            <tr>
+                <th>Session</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ entity.date }}</td>
+            </tr>
+            <tr>
+                <th>Formation</th>
+                <td>{{ entity.formation.name }}</td>
+            </tr>
+            <tr>
+                <th>Professeur</th>
+                <td>{{ entity.teacher.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                {#<td>{{ entity.adress. }}</td>#}
+            </tr>
+        </tbody>
+    </table>
+            
+    <div class='col-sm-3 line-bottom'>
+        <a href="{{ path('event') }}">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to the list
+        </a>
+    </div>
+            <div class='col-sm-6'></div>
+    <div class='col-sm-3'>                
+        <ul class='list-inline'>
+            <li>
+                <a href="{{ path('event_edit', { 'id': entity.id }) }}">
+                    <button type="button" class="btn btn-primary">            
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+                    </button>
+                </a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}  
+                    <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</button>
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
+{% endblock %}

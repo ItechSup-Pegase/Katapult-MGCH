@@ -1,0 +1,31 @@
+{% extends "AppBundle:Event:layout.html.twig" %}
+
+{% block content -%}
+    <h1>Event creation</h1>
+
+    {{ form_start(form) }}
+        <div class="form-horizontal">
+            {% for item in form  if item.vars['name'] != '_token' %}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        {{ form_label(item) }}
+                    </label>
+                    <div class ="col-sm-10">
+                        {{ form_widget(item) }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class ="form-group">
+                <div class='line-bottom col-sm-2'>
+                        <a href="{{ path('event') }}">
+                            <span class="glyphicon glyphicon-arrow-left" aria-hidden=""true"></span> Back
+                        </a>
+                </div>
+                <div class= "col-sm-10">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+            {{ form_widget(form._token) }}
+        </div>    
+    {{ form_end(form) }}
+{% endblock %}

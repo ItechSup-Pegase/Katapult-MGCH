@@ -1,0 +1,23 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block title 'Event' %}
+
+
+{% block column_left %}
+    
+    <li>
+        <a class='{%block column_list%}active{%endblock%}' href="{{ path('event') }}">
+            <span class="glyphicon glyphicon-th-list" aria-hidden=""true"> 
+                List
+            </span>
+        </a>
+    </li>
+    <li>
+        <a class='{%block column_add%}{%endblock%}' href="{{ path('event_new') }}">
+            <span class="glyphicon glyphicon-plus" aria-hidden=""true"> 
+                  Add
+            </span>
+        </a>
+    </li>
+
+{% endblock %}

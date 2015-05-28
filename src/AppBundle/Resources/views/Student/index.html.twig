@@ -1,0 +1,66 @@
+{% extends "AppBundle:Student:layout.html.twig" %}
+
+{% block content %}
+    <h1><span class="glyphicon glyphicon-education" aria-hidden=""true"></span> Student List</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th width='10%'>Show</th>
+                <th width='10%'>Edit</th>
+                <th width='10%'>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.firstName }}</td>
+                <td>{{ entity.lastName }}</td>
+                <td width='10%'>
+                    <a href="{{ path('student_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </td>
+                <td width='10%'>
+                    <a href="{{ path('student_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                </td>
+                <td width='10%'>
+                    <a data-toggle="modal" data-target="#myModal{{entity.id}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                </td>
+            </tr>
+            
+                        <!--MODAL-->
+
+                <div class="modal fade" id="myModal{{entity.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Confirmation</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p>Etes-vous sûr de vouloir confirmer votre suppression</p>
+                      </div>
+                      <div class="modal-footer">
+                        <ul class="list-inline">
+                            <li>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                            </li>
+                            <li>
+                                <a class="btn btn-danger" href="{{ path('student_index_delete', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer</a> 
+                           </li>
+                        </ul>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

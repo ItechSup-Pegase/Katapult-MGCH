@@ -1,0 +1,16 @@
+{% extends "AppBundle::person_detail.html.twig" %}
+
+{% block person_type -%}<span class="glyphicon glyphicon-education" aria-hidden=""true"></span> Student{% endblock %}
+
+{% block person_additional_property -%}
+    
+    {% if entity.client %}
+        
+        <tr>
+            <th>Client</th>
+            <td>{{ entity.client.entreprise }}</td>
+        </tr>
+        
+    {%endif%}
+            
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" href="{{ asset("/bundles/app/css/template.css") }}">
+<link rel="stylesheet" href="{{ asset("/bundles/app/css/style.css") }}">
+
+
+{% endblock %}
+
+{% block title '' %}
+
+{% block body %}
+
+    {% block content_header %}
+        <nav id="top-nav" class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header col-sm-2">
+              <a class="navbar-brand" href="/"  width='150px'><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Sofitech</a>
+            </div>
+            <div class="col-sm-10">
+              <ul class="nav navbar-nav">
+            {% block content_header_more %}
+                <li class="{%block selected_page_student %}{%endblock%}"><a href="/student" >Gestion des personnes</a></li>
+                <li class="{%block selected_page_teacher %}{%endblock%}"><a href="/category" >Gestion des formations</a></li>
+                <li class="{%block selected_page_client %}{%endblock%}"><a href="/event">Gestion des session</a></li>
+            {% endblock %}  
+              </ul>
+
+            </div>
+          </div>
+        </nav>
+    {% endblock %}
+
+<div class="container">    
+
+    <div class="row">
+        <div class="col-sm-2 menu-vertical">
+            <ul class="nav nav-stacked">
+        {% block column_left %}
+
+         {% endblock %} 
+
+            </ul>
+        </div>
+
+
+
+        <div class="col-sm-10">
+            {% block sub_content_header_more %}  
+            {% endblock %} 
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+{% endblock %}

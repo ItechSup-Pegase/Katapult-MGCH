@@ -1,0 +1,43 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 7, 2015, 4:31:09 PM
+    Author     : dev
+*/
+
+/* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .navbar {
+    margin-bottom: 20px;
+  }
+  .navbar-brand {
+    width: 125px;
+  }
+  .nav-stacked .active{
+      background-color: #EEE;
+  }
+  .line-bottom{
+      font-size : 125%;
+  }
+  .menu-vertical{
+      margin-top: 42px;
+  }
+}

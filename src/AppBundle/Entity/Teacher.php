@@ -1,0 +1,126 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Person;
+
+/**
+ * Teacher
+ *
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\TeacherRepository")
+ */
+class Teacher extends Person
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @var ArrayCollection
+     *  
+     * @ORM\ManyToMany(targetEntity="Formation", mappedBy="teachers")
+     **/
+    private $formations;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="teachers")
+     * 
+     */
+    private $events;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return parent::getId();
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->formations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add formations
+     *
+     * @param \AppBundle\Entity\Formation $formations
+     * @return Teacher
+     */
+    public function addFormation(\AppBundle\Entity\Formation $formations)
+    {
+        $this->formations[] = $formations;
+
+        return $this;
+    }
+
+    /**
+     * Remove formations
+     *
+     * @param \AppBundle\Entity\Formation $formations
+     */
+    public function removeFormation(\AppBundle\Entity\Formation $formations)
+    {
+        $this->formations->removeElement($formations);
+    }
+
+    /**
+     * Get formations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFormations()
+    {
+        return $this->formations;
+    }
+
+    /**
+     * Add events
+     *
+     * @param \AppBundle\Entity\Event $events
+     * @return Teacher
+     */
+    public function addEvent(\AppBundle\Entity\Event $events)
+    {
+        $this->events[] = $events;
+
+        return $this;
+    }
+
+    /**
+     * Remove events
+     *
+     * @param \AppBundle\Entity\Event $events
+     */
+    public function removeEvent(\AppBundle\Entity\Event $events)
+    {
+        $this->events->removeElement($events);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+    
+    public function __toString() {
+        return $this->getFirstName().' '.$this->getLastName();
+    }
+}

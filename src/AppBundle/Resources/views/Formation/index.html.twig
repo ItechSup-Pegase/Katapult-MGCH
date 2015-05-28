@@ -1,0 +1,32 @@
+{% extends "AppBundle:Formation:layout.html.twig" %}
+
+{% block content -%}
+    <h1>Formation list</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th width='10%'>Show</th>
+                <th width='10%'>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <tr>
+                <td>{{ entity.name }}</td>
+                
+                <td width="10%">
+                    <a href="{{ path('formation_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </td>
+                <td width="10%">
+                    <a href="{{ path('formation_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                </td>                
+            </tr>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        
+    {% endblock %}

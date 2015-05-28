@@ -1,0 +1,34 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block title 'Teacher' %}
+
+{% block sub_content_header_more %}  
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="/student">Student</a></li>
+        <li role="presentation" class="active"><a href="/teacher">Teacher</a></li>
+        <li role="presentation"><a href="/client">Client</a></li>
+    </ul>
+{% endblock %} 
+    
+{% block column_left %}
+    
+    <li>
+        <a class='{%block column_list%}active{%endblock%}' href="{{ path('teacher') }}">
+            <span class="glyphicon glyphicon-th-list" aria-hidden=""true"> 
+                List
+            </span>
+        </a>
+    </li>
+    <li>
+        <a class='{%block column_add%}{%endblock%}' href="{{ path('teacher_new') }}">
+            <span class="glyphicon glyphicon-plus" aria-hidden=""true"> 
+                  Add
+            </span>
+        </a>
+    </li>
+
+{% endblock %}
+
+{%block selected_page_student %}{%endblock%}
+{%block selected_page_teacher %}active{%endblock%}
+{%block selected_page_client %}{%endblock%}

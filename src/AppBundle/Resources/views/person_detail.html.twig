@@ -1,0 +1,37 @@
+{% block person -%}
+    
+<h1>{% block person_type -%}{% endblock %}</h1>
+  <!-- Table -->
+    <table class="table table-striped ">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ entity.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ entity.phone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.mail }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ entity.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+            </tr>
+            {% block person_additional_property -%}
+            
+            {% endblock %}
+        </tbody>
+    </table>
+       
+            
+{% endblock %}
