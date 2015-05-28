@@ -217,7 +217,7 @@ class CategoryController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('category_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('category_show', array('id' => $id)));
         }
 
         return array(

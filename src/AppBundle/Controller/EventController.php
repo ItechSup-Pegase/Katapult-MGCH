@@ -193,7 +193,7 @@ class EventController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('event_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('event_show', array('id' => $id)));
         }
 
         return array(
