@@ -18,8 +18,8 @@ class EventType extends AbstractType
         $builder
             ->add('date', 'date',array('required' => false, 'widget' =>'single_text','format' =>'dd/MM/yyyy', 'attr'=>  array('class'=>'datepicker')))
             ->add('address',  new AddressType())
-            ->add('teachers')
-            ->add('formations', null, array('property'=>'name'))
+            ->add('teacher')
+            ->add('formation', null, array('property'=>'name'))
         ;
     }
     

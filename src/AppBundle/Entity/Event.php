@@ -50,7 +50,7 @@ class Event
      * @ORM\ManyToOne(targetEntity="Teacher",inversedBy="events")
      * @ORM\JoinColumn(name="teacher_id" , referencedColumnName="id")
      */
-    private $teachers;
+    private $teacher;
     
     /**
      * @var integer
@@ -140,28 +140,6 @@ class Event
         return $this->students;
     }
 
-    /**
-     * Set teachers
-     *
-     * @param \AppBundle\Entity\Teacher $teachers
-     * @return Event
-     */
-    public function setTeachers(\AppBundle\Entity\Teacher $teachers = null)
-    {
-        $this->teachers = $teachers;
-
-        return $this;
-    }
-
-    /**
-     * Get teachers
-     *
-     * @return \AppBundle\Entity\Teacher 
-     */
-    public function getTeachers()
-    {
-        return $this->teachers;
-    }
 
     /**
      * Set formations
@@ -237,5 +215,28 @@ class Event
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Set teacher
+     *
+     * @param \AppBundle\Entity\Teacher $teacher
+     * @return Event
+     */
+    public function setTeacher(\AppBundle\Entity\Teacher $teacher = null)
+    {
+        $this->teacher = $teacher;
+
+        return $this;
+    }
+
+    /**
+     * Get teacher
+     *
+     * @return \AppBundle\Entity\Teacher 
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
     }
 }
