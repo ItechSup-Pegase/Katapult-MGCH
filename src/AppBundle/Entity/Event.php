@@ -22,9 +22,9 @@ class Event
     private $id;
 
     /**
-     * @var string
+     * @var date
      *
-     * @ORM\Column(name="date", type="string", length=255)
+     * @ORM\Column(name="date", type="date")
      */
     private $date;
     
@@ -58,7 +58,7 @@ class Event
      * @ORM\ManyToOne(targetEntity="Formation",inversedBy="events")
      * @ORM\JoinColumn(name="formation_id" , referencedColumnName="id")
      */
-    private $formations;
+    private $formation;
 
 
     /**
@@ -166,12 +166,12 @@ class Event
     /**
      * Set formations
      *
-     * @param \AppBundle\Entity\Formation $formations
+     * @param \AppBundle\Entity\Formation $formation
      * @return Event
      */
-    public function setFormations(\AppBundle\Entity\Formation $formations = null)
+    public function setFormation(\AppBundle\Entity\Formation $formation = null)
     {
-        $this->formations = $formations;
+        $this->formation = $formation;
 
         return $this;
     }
@@ -181,9 +181,9 @@ class Event
      *
      * @return \AppBundle\Entity\Formation 
      */
-    public function getFormations()
+    public function getFormation()
     {
-        return $this->formations;
+        return $this->formation;
     }
     /**
      * Constructor
@@ -214,5 +214,28 @@ class Event
     public function removeStudent(\AppBundle\Entity\Student $students)
     {
         $this->students->removeElement($students);
+    }
+
+    /**
+     * Set address
+     *
+     * @param \AppBundle\Entity\Address $address
+     * @return Event
+     */
+    public function setAddress(\AppBundle\Entity\Address $address = null)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return \AppBundle\Entity\Address 
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 }

@@ -54,7 +54,7 @@ class Category
      *
      * @var type 
      * 
-     * @ORM\OneToMany(targetEntity="Formation" , mappedBy="formation")
+     * @ORM\OneToMany(targetEntity="Formation" , mappedBy="category")
      */
     private $formations;
 

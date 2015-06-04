@@ -77,7 +77,7 @@ class Address
     /**
      * @var string
      * 
-     * @ORM\OneToMany(targetEntity="Event", mappedBy="addresses")
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="address")
      * 
      */
     private $events;

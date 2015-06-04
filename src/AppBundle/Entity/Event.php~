@@ -31,10 +31,10 @@ class Event
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Address",inversedBy="events")
+     * @ORM\ManyToOne(targetEntity="Address",inversedBy="events", cascade={"persist"})
      * @ORM\JoinColumn(name="address_id" , referencedColumnName="id")
      */
-    private $addresses;
+    private $address;
     
     /**
      * @var ArrayCollection
@@ -184,5 +184,35 @@ class Event
     public function getFormations()
     {
         return $this->formations;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->students = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add students
+     *
+     * @param \AppBundle\Entity\Student $students
+     * @return Event
+     */
+    public function addStudent(\AppBundle\Entity\Student $students)
+    {
+        $this->students[] = $students;
+
+        return $this;
+    }
+
+    /**
+     * Remove students
+     *
+     * @param \AppBundle\Entity\Student $students
+     */
+    public function removeStudent(\AppBundle\Entity\Student $students)
+    {
+        $this->students->removeElement($students);
     }
 }
