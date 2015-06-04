@@ -49,7 +49,7 @@ class Formation
     /**
      * @var string
      * 
-     * @ORM\OneToMany(targetEntity="Event", mappedBy="formations")
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="formation")
      * 
      */
     private $events;

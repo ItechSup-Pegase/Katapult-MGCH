@@ -41,17 +41,18 @@ class Client extends Person
      *
      * @var type 
      * 
-     * @ORM\OneToMany(targetEntity="Student" , mappedBy="student")
+     * @ORM\OneToMany(targetEntity="Student" , mappedBy="client")
      */
     private $students;
     
       
     /**
-     * @var string
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Address", mappedBy="client" )
      */
-    private $adresses;
+    private $addresses;
+    
     
     public function __construct() {
         $this->addresses = new ArrayCollection();
@@ -149,36 +150,38 @@ class Client extends Person
         return $this->students;
     }
 
+    
+
     /**
-     * Add adresses
+     * Add addresses
      *
-     * @param \AppBundle\Entity\Address $adresses
+     * @param \AppBundle\Entity\Address $addresses
      * @return Client
      */
-    public function addAdress(\AppBundle\Entity\Address $adresses)
+    public function addAddress(\AppBundle\Entity\Address $addresses)
     {
-        $this->adresses[] = $adresses;
+        $this->addresses[] = $addresses;
 
         return $this;
     }
 
     /**
-     * Remove adresses
+     * Remove addresses
      *
-     * @param \AppBundle\Entity\Address $adresses
+     * @param \AppBundle\Entity\Address $addresses
      */
-    public function removeAdress(\AppBundle\Entity\Address $adresses)
+    public function removeAddress(\AppBundle\Entity\Address $addresses)
     {
-        $this->adresses->removeElement($adresses);
+        $this->addresses->removeElement($addresses);
     }
 
     /**
-     * Get adresses
+     * Get addresses
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAdresses()
+    public function getAddresses()
     {
-        return $this->adresses;
+        return $this->addresses;
     }
 }

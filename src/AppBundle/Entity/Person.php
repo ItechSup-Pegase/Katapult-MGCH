@@ -63,7 +63,7 @@ abstract class Person
      *
      * @ORM\OneToMany(targetEntity="Address", mappedBy="person" )
      */
-    private $adresses;
+    private $addresses;
     
     public function __construct() {
         $this->addresses = new ArrayCollection();
@@ -249,5 +249,38 @@ abstract class Person
     public function getAdresses()
     {
         return $this->adresses;
+    }
+
+    /**
+     * Add addresses
+     *
+     * @param \AppBundle\Entity\Address $addresses
+     * @return Person
+     */
+    public function addAddress(\AppBundle\Entity\Address $addresses)
+    {
+        $this->addresses[] = $addresses;
+
+        return $this;
+    }
+
+    /**
+     * Remove addresses
+     *
+     * @param \AppBundle\Entity\Address $addresses
+     */
+    public function removeAddress(\AppBundle\Entity\Address $addresses)
+    {
+        $this->addresses->removeElement($addresses);
+    }
+
+    /**
+     * Get addresses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
     }
 }

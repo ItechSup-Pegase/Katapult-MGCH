@@ -33,7 +33,7 @@ class Formation
      *
      * @var Category 
      * 
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="formation")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="formations")
      * @ORM\ JoinColumn(name="category_id" , referencedColumnName="id")
      */
     private $category;
@@ -49,7 +49,7 @@ class Formation
     /**
      * @var string
      * 
-     * @ORM\OneToMany(targetEntity="Event", mappedBy="formations")
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="formation")
      * 
      */
     private $events;
