@@ -33,7 +33,7 @@ class Formation
      *
      * @var Category 
      * 
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="formations")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="formation")
      * @ORM\ JoinColumn(name="category_id" , referencedColumnName="id")
      */
     private $category;
