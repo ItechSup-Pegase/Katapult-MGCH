@@ -31,7 +31,7 @@ class Teacher extends Person
     /**
      * @var string
      * 
-     * @ORM\OneToMany(targetEntity="Event", mappedBy="teachers")
+     * @ORM\OneToMany(targetEntity="Event", mappedBy="teacher")
      * 
      */
     private $events;
