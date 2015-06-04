@@ -19,26 +19,6 @@
 {% block title '' %}
 
 {% block body %}
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            {% endif %}
-        </div>
-
-        {% if app.request.hasPreviousSession %}
-            {% for type, messages in app.session.flashbag.all() %}
-                {% for message in messages %}
-                    <div class="flash-{{ type }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
-        {% endif %}
 
     {% block content_header %}
         <nav id="top-nav" class="navbar navbar-inverse navbar-static-top">
@@ -46,15 +26,27 @@
             <div class="navbar-header col-sm-2">
               <a class="navbar-brand" href="/"  width='150px'><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Sofitech</a>
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
               <ul class="nav navbar-nav">
             {% block content_header_more %}
                 <li class="{%block selected_page_student %}{%endblock%}"><a href="/student" >Gestion des personnes</a></li>
                 <li class="{%block selected_page_teacher %}{%endblock%}"><a href="/category" >Gestion des formations</a></li>
                 <li class="{%block selected_page_client %}{%endblock%}"><a href="/event">Gestion des session</a></li>
+                     
             {% endblock %}  
               </ul>
-
+            </div>
+               
+            <div class="navbar-right col-sm-2 signin">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        <button type="button" class="btn btn-link navbar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Déconnexion</button>
+                    </a>
+                {% else %}
+                    <a href="{{ path('fos_user_security_login') }}"><button type="button" class="btn btn-link navbar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Connexion</button></a>
+                {% endif %}
+              
             </div>
           </div>
         </nav>
@@ -80,6 +72,15 @@
             {% block content %}
 
             {% endblock %}
+            {% if app.request.hasPreviousSession %}
+                {% for type, messages in app.session.flashbag.all() %}
+                    {% for message in messages %}
+                        <div class="flash-{{ type }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 </div>
