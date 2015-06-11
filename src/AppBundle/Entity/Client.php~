@@ -25,10 +25,11 @@ class Client extends Person
 
     /**
      * @var Address
-     * @ORM\OneToOne(targetEntity="Address", inversedBy="client")
-     *
+     * 
+     * @ORM\OneToOne(targetEntity="Address", mappedBy="client")
+     * 
      */
-    private $factAdr;
+    private $factAddress;
 
     /**
      * @var string
@@ -65,29 +66,7 @@ class Client extends Person
         return parent::getId();
     }
 
-    /**
-     * Set factAdr
-     *
-     * @param string $factAdr
-     * @return Client
-     */
-    public function setFactAdr($factAdr)
-    {
-        $this->factAdr = $factAdr;
-
-        return $this;
-    }
-
-    /**
-     * Get factAdr
-     *
-     * @return string 
-     */
-    public function getFactAdr()
-    {
-        return $this->factAdr;
-    }
-
+ 
     /**
      * Set entreprise
      *

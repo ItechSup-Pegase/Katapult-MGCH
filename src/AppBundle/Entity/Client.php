@@ -25,10 +25,11 @@ class Client extends Person
 
     /**
      * @var Address
-     * @ORM\OneToOne(targetEntity="Address", inversedBy="client")
-     *
+     * 
+     * @ORM\OneToOne(targetEntity="Address", mappedBy="client")
+     * 
      */
-    private $factAdr;
+    private $factAddress;
 
     /**
      * @var string
@@ -65,29 +66,7 @@ class Client extends Person
         return parent::getId();
     }
 
-    /**
-     * Set factAdr
-     *
-     * @param string $factAdr
-     * @return Client
-     */
-    public function setFactAdr($factAdr)
-    {
-        $this->factAdr = $factAdr;
-
-        return $this;
-    }
-
-    /**
-     * Get factAdr
-     *
-     * @return string 
-     */
-    public function getFactAdr()
-    {
-        return $this->factAdr;
-    }
-
+ 
     /**
      * Set entreprise
      *
@@ -145,4 +124,65 @@ class Client extends Person
     }
 
   
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $addresses;
+
+
+    /**
+     * Set factAddress
+     *
+     * @param \AppBundle\Entity\Address $factAddress
+     * @return Client
+     */
+    public function setFactAddress(\AppBundle\Entity\Address $factAddress = null)
+    {
+        $this->factAddress = $factAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get factAddress
+     *
+     * @return \AppBundle\Entity\Address 
+     */
+    public function getFactAddress()
+    {
+        return $this->factAddress;
+    }
+
+    /**
+     * Add addresses
+     *
+     * @param \AppBundle\Entity\Address $addresses
+     * @return Client
+     */
+    public function addAddress(\AppBundle\Entity\Address $addresses)
+    {
+        $this->addresses[] = $addresses;
+
+        return $this;
+    }
+
+    /**
+     * Remove addresses
+     *
+     * @param \AppBundle\Entity\Address $addresses
+     */
+    public function removeAddress(\AppBundle\Entity\Address $addresses)
+    {
+        $this->addresses->removeElement($addresses);
+    }
+
+    /**
+     * Get addresses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
+    }
 }

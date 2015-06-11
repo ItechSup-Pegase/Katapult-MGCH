@@ -63,7 +63,7 @@ abstract class Person
      *
      * @ORM\OneToMany(targetEntity="Address", mappedBy="person" )
      */
-    private $addresses;
+    protected $addresses;
     
     public function __construct() {
         $this->addresses = new ArrayCollection();

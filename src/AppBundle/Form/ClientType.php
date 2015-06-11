@@ -20,7 +20,7 @@ class ClientType extends AbstractType
             ->add('phone')
             ->add('mail')
             ->add('sexe')    
-            ->add('factAdr')
+            ->add('factAddress')
             ->add('entreprise')
         ;
     }

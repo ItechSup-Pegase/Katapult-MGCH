@@ -123,4 +123,42 @@ class Teacher extends Person
     public function __toString() {
         return $this->getFirstName().' '.$this->getLastName();
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $addresses;
+
+
+    /**
+     * Add addresses
+     *
+     * @param \AppBundle\Entity\Address $addresses
+     * @return Teacher
+     */
+    public function addAddress(\AppBundle\Entity\Address $addresses)
+    {
+        $this->addresses[] = $addresses;
+
+        return $this;
+    }
+
+    /**
+     * Remove addresses
+     *
+     * @param \AppBundle\Entity\Address $addresses
+     */
+    public function removeAddress(\AppBundle\Entity\Address $addresses)
+    {
+        $this->addresses->removeElement($addresses);
+    }
+
+    /**
+     * Get addresses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
+    }
 }
