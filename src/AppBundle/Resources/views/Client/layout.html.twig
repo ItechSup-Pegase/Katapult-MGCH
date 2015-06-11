@@ -13,16 +13,12 @@
 {% block column_left %}
 <li>
     <a class='{%block column_list%}active{%endblock%}' href="{{ path('client') }}">
-        <span class="glyphicon glyphicon-th-list" aria-hidden="true"> 
-            List
-        </span>
+        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> List
     </a>
 </li>
 <li>
     <a class='{%block column_add%}{%endblock%}' href="{{ path('client_new') }}">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"> 
-              Add
-        </span>
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
     </a>
 </li>     
 {% endblock %}
