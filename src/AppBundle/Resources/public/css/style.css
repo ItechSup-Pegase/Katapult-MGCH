@@ -84,7 +84,6 @@ and open the template in the editor.
     @media (max-width: 767px) {
     .navbar-collapse .nav > .divider-vertical {
         display: none;
-      }
-      
-}
+      }  
+    }
 }

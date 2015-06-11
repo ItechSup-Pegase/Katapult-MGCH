@@ -1,2 +1,1 @@
-- Mettre un glyphicon sur supprimer dans SHOW
-- Modifier les index actions dans les controller pour permettre la suppresion depuis une liste.
+- Détails formulaire Inscription (redirection; visuel; message d'erreur)
