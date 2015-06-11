@@ -69,7 +69,7 @@ class Address
      *
      * @var type 
      * 
-     * @ORM\ManyToOne(targetEntity="Client", inversedBy="addresses")
+     * @ORM\OneToOne(targetEntity="Client", inversedBy="factAddress")
      * @ORM\JoinColumn(name="client_id" , referencedColumnName="id")
      */
     private $client;

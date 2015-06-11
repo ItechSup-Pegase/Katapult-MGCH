@@ -24,9 +24,9 @@ class Client extends Person
     private $id;
 
     /**
-     * @var string
+     * @var Address
+     * @ORM\OneToOne(targetEntity="Address", inversedBy="client")
      *
-     * @ORM\Column(name="factAdr", type="string", length=255)
      */
     private $factAdr;
 
@@ -42,20 +42,14 @@ class Client extends Person
      * @var type 
      * 
      * @ORM\OneToMany(targetEntity="Student" , mappedBy="client")
+     * 
      */
     private $students;
     
-      
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Address", mappedBy="client" )
-     */
-    private $addresses;
+ 
     
     
     public function __construct() {
-        $this->addresses = new ArrayCollection();
         $this->students = new ArrayCollection();
     
     }
@@ -150,38 +144,5 @@ class Client extends Person
         return $this->students;
     }
 
-    
-
-    /**
-     * Add addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     * @return Client
-     */
-    public function addAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses[] = $addresses;
-
-        return $this;
-    }
-
-    /**
-     * Remove addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     */
-    public function removeAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses->removeElement($addresses);
-    }
-
-    /**
-     * Get addresses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAddresses()
-    {
-        return $this->addresses;
-    }
+  
 }
