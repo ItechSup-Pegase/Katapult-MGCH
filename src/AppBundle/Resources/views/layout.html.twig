@@ -40,14 +40,13 @@
             <div class="navbar-right col-sm-4 signin">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                    <a href="{{ path('fos_user_security_logout') }}">
-                        <button type="button" class="btn btn-link navbar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Déconnexion</button>
-                    </a>
+                    <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-link navbar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Déconnexion</button></a>
                 {% else %}
                     <a href="{{ path('fos_user_security_login') }}"><button type="button" class="btn btn-link navbar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Connexion</button></a>
+                    <a href="/register"><button type="button" class="btn btn-link navbar-btn">  Inscription</button></a>
                 {% endif %}
                 
-                <a href="/register"><button type="button" class="btn btn-link navbar-btn">  Inscription</button></a>
+                
               
             </div>
           </div>
