@@ -13,15 +13,6 @@ use AppBundle\Entity\Person;
 class Student extends Person
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-    
-    /**
      *
      * @var Client 
      * 
@@ -37,19 +28,6 @@ class Student extends Person
      * 
      */
     private $events;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return parent::getId();
-    }
-    
-    
 
     /**
      * Set client
@@ -78,6 +56,7 @@ class Student extends Person
      */
     public function __construct()
     {
+        parent::__construct();
         $this->events = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -118,42 +97,6 @@ class Student extends Person
     public function __toString() {
         return $this->getFirstName().' '.$this->getLastName();
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $addresses;
-
-
-    /**
-     * Add addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     * @return Student
-     */
-    public function addAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses[] = $addresses;
-
-        return $this;
-    }
-
-    /**
-     * Remove addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     */
-    public function removeAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses->removeElement($addresses);
-    }
-
-    /**
-     * Get addresses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAddresses()
-    {
-        return $this->addresses;
-    }
+     
+    
 }

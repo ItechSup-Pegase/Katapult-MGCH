@@ -60,16 +60,14 @@ class Address
      *
      * @var type 
      * 
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="addresses")
-     * @ORM\JoinColumn(name="person_id" , referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Person", mappedBy="address")
      */
     private $person;
     
     /**
      *
      * @var type 
-     * @ORM\OneToOne(targetEntity="Client", inversedBy = "factAddress")
-     * @ORM\JoinColumn(name="client_id" , referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Client", mappedBy = "factAddress")
      * 
      */
     private $client;

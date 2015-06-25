@@ -22,7 +22,7 @@ class StudentType extends AbstractType
             ->add('mail')
             ->add('sexe')
             ->add('client', null, array('property'=> 'entreprise'))
-            ->add('addresses',  new AddressType())    
+            ->add('address',  new AddressType())    
             
         ;
     }

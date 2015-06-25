@@ -13,15 +13,6 @@ use AppBundle\Entity\Person;
 class Teacher extends Person
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-    
-    /**
      * @var ArrayCollection
      *  
      * @ORM\ManyToMany(targetEntity="Formation", mappedBy="teachers")
@@ -38,19 +29,11 @@ class Teacher extends Person
 
 
     /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return parent::getId();
-    }
-    /**
      * Constructor
      */
     public function __construct()
     {
+        parent::__construct();
         $this->formations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -122,43 +105,5 @@ class Teacher extends Person
     
     public function __toString() {
         return $this->getFirstName().' '.$this->getLastName();
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $addresses;
-
-
-    /**
-     * Add addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     * @return Teacher
-     */
-    public function addAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses[] = $addresses;
-
-        return $this;
-    }
-
-    /**
-     * Remove addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     */
-    public function removeAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses->removeElement($addresses);
-    }
-
-    /**
-     * Get addresses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAddresses()
-    {
-        return $this->addresses;
-    }
+    }   
 }

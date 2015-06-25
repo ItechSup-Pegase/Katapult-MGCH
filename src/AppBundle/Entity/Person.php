@@ -21,52 +21,52 @@ abstract class Person
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
      */
-    private $phone;
+    protected $phone;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255)
      */
-    private $mail;
+    protected $mail;
 
     /**
      * @var string
      *
      * @ORM\Column(name="sexe", type="string", length=255)
      */
-    private $sexe;
+    protected $sexe;
 
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="Address", mappedBy="person" )
+     * @ORM\OneToOne(targetEntity="Address", inversedBy="person", cascade={"persist"})
      */
-    private $addresses;
+    protected $address;
     
     public function __construct() {
-        $this->addresses = new ArrayCollection();
+
     } 
 
 
@@ -198,35 +198,25 @@ abstract class Person
     
 
     /**
-     * Add addresses
+     * Set address
      *
-     * @param \AppBundle\Entity\Address $addresses
+     * @param \AppBundle\Entity\Address $address
      * @return Person
      */
-    public function addAddress(\AppBundle\Entity\Address $addresses)
+    public function setAddress(\AppBundle\Entity\Address $address)
     {
-        $this->addresses[] = $addresses;
-
+        $this->address = $address;
+        $address->setPerson($this);
         return $this;
     }
 
     /**
-     * Remove addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     */
-    public function removeAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses->removeElement($addresses);
-    }
-
-    /**
-     * Get addresses
+     * Get address
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAddresses()
+    public function getAddress()
     {
-        return $this->addresses;
+        return $this->address;
     }
 }

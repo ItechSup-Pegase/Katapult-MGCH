@@ -14,19 +14,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Client extends Person
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
+   /**
      * @var Address
      * 
-     * @ORM\OneToOne(targetEntity="Address", mappedBy="client")
+     * @ORM\OneToOne(targetEntity="Address", inversedBy="client", cascade={"persist"})
      * 
      */
     private $factAddress;
@@ -51,23 +42,13 @@ class Client extends Person
     
     
     public function __construct() {
+        
+        parent::__construct();
         $this->students = new ArrayCollection();
     
     }
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return parent::getId();
-    }
-
- 
-    /**
+   /**
      * Set entreprise
      *
      * @param string $entreprise
@@ -123,13 +104,6 @@ class Client extends Person
         return $this->students;
     }
 
-  
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $addresses;
-
-
     /**
      * Set factAddress
      *
@@ -139,6 +113,7 @@ class Client extends Person
     public function setFactAddress(\AppBundle\Entity\Address $factAddress = null)
     {
         $this->factAddress = $factAddress;
+        $factAddress->setClient($this);
 
         return $this;
     }
@@ -152,37 +127,5 @@ class Client extends Person
     {
         return $this->factAddress;
     }
-
-    /**
-     * Add addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     * @return Client
-     */
-    public function addAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses[] = $addresses;
-
-        return $this;
-    }
-
-    /**
-     * Remove addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     */
-    public function removeAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses->removeElement($addresses);
-    }
-
-    /**
-     * Get addresses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAddresses()
-    {
-        return $this->addresses;
-    }
+    
 }
