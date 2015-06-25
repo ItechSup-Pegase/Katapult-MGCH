@@ -26,7 +26,7 @@
             <div class="navbar-header col-sm-2">
               <a class="navbar-brand" href="/"  width='150px'><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Sofitech</a>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-6">
               <ul class="nav navbar-nav">
             {% block content_header_more %}
                 <li class="{%block selected_page_student %}{%endblock%}"><a href="/student" >Gestion des personnes</a></li>
@@ -37,15 +37,16 @@
               </ul>
             </div>
                
-            <div class="navbar-right col-sm-2 signin">
+            <div class="navbar-right col-sm-4 signin">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                    <a href="{{ path('fos_user_security_logout') }}">
-                        <button type="button" class="btn btn-link navbar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Déconnexion</button>
-                    </a>
+                    <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-link navbar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Déconnexion</button></a>
                 {% else %}
                     <a href="{{ path('fos_user_security_login') }}"><button type="button" class="btn btn-link navbar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Connexion</button></a>
+                    <a href="/register"><button type="button" class="btn btn-link navbar-btn">  Inscription</button></a>
                 {% endif %}
+                
+                
               
             </div>
           </div>
