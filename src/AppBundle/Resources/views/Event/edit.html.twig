@@ -5,7 +5,7 @@
 
     {{ form_start(edit_form) }}
         <div class="form-horizontal">
-            {% for item in edit_form  if item.vars['name'] != '_token' %}
+            {% for item in edit_form  if item.vars['name'] != '_token' and item.vars['name'] != 'address' %}
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         {{ form_label(item) }}
@@ -15,29 +15,47 @@
                     </div>
                 </div>
             {% endfor %}
-            <div class ="form-group">
-                <div class='line-bottom col-sm-2'>
-                        <a href="{{ path('event_show', { 'id': entity.id }) }}">
-                            <span class="glyphicon glyphicon-arrow-left" aria-hidden=""true"></span> Back
-                        </a>
+        </div>
+        <div class="address">
+            {% for item in edit_form  if item.vars['name'] != '_token' and item.vars['name'] == 'address' %}
+                <div>
+                    <div class="col-sm-2 control-label">
+                        <label class="pull-right" >
+                                {{ form_label(item) }}
+                        </label>
+                    </div>
+                    <div class ="col-sm-8">
+                        {{ form_start(item) }}
+                            {% for subitem in item  if subitem.vars['name'] != '_token' %}
+                                <div class="form-group form-group-sm">
+                                    <label class="control-label">
+                                        {{ form_label(subitem) }}
+                                    </label>
+                                    <div>
+                                        {{ form_widget(subitem) }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {{ form_end(item) }}    
+                    </div>
                 </div>
-                <div class= "col-sm-10">
-                    <ul class="list-inline"
-                        <li><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden=true"></span> Update</button></li>
-                    
-             
-            {{ form_widget(edit_form._token) }}
-          
-    
+            
+            {% endfor %}
+        {{ form_widget(edit_form._token) }}
+        
+            <div class="col-sm-10 div-button">
+                <a href="{{ path('event', { 'id': entity.id }) }}">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+                </a>
+                <span class="button-event">
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden=true"></span> Update</button>                
     {{ form_end(edit_form) }}  
-                        <li>
+                
     {{ form_start(delete_form) }}  
-                        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden=""true"></span> Delete</button></li>
-                    </ul>
-    {{ form_end(delete_form) }}
-    
-                </div>
-                    
-            </div>
+                    <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden=""true"></span> Delete</button>
+    {{ form_end(delete_form) }}            
+                </span>
+                                                          
+            </div>    
         </div>
 {% endblock %}
