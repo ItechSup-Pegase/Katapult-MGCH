@@ -30,8 +30,8 @@
               <ul class="nav navbar-nav">
             {% block content_header_more %}
                 <li class="{%block selected_page_student %}{%endblock%}"><a href=" {{ path("student") }} ">Gestion des personnes</a></li>
-                <li class="{%block selected_page_teacher %}{%endblock%}"><a href=" {{ path("category") }} " >Gestion des formations</a></li>
-                <li class="{%block selected_page_client %}{%endblock%}"><a href=" {{ path("event") }} ">Gestion des session</a></li>
+                <li class="{%block selected_page_category %}{%endblock%}"><a href=" {{ path("category") }} " >Gestion des formations</a></li>
+                <li class="{%block selected_page_event %}{%endblock%}"><a href=" {{ path("event") }} ">Gestion des session</a></li>
                      
             {% endblock %}  
               </ul>
