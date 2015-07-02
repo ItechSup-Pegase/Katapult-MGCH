@@ -21,7 +21,7 @@ class TeacherType extends AbstractType
             ->add('lastName')
             ->add('phone')
             ->add('mail')
-            ->add('sexe')
+            ->add('sexe', 'choice', array('choices' => array('m' => 'Masculin', 'f' => 'Féminin')))
             ->add('address',  new AddressType(), array('data_class' => 'AppBundle\Entity\Address'));
     }
     

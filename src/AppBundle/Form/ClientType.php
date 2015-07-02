@@ -19,7 +19,7 @@ class ClientType extends AbstractType
             ->add('lastName')
             ->add('phone')
             ->add('mail')
-            ->add('sexe')    
+            ->add('sexe', 'choice', array('choices' => array('m' => 'Masculin', 'f' => 'Féminin')))    
             ->add('factAddress' , new AddressType())
             ->add('entreprise')
             ->add('address',  new AddressType())     

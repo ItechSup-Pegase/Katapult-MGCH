@@ -20,7 +20,7 @@ class StudentType extends AbstractType
             ->add('lastName')
             ->add('phone')
             ->add('mail')
-            ->add('sexe')
+            ->add('sexe', 'choice', array('choices' => array('m' => 'Masculin', 'f' => 'Féminin')))
             ->add('client', null, array('property'=> 'entreprise'))
             ->add('address',  new AddressType())    
             
