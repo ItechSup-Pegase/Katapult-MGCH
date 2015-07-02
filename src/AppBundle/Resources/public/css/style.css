@@ -74,6 +74,9 @@ and open the template in the editor.
     .address{
         margin-left: -12px;
     }
+    .address2{
+        margin-left: 65px;
+    }
     .button-event{
         margin-left: 108px;
     }

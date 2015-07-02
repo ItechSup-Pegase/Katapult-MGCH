@@ -16,12 +16,12 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="address">
+        <div class="address2">
             <ul class="list-inline">
             {% for item in edit_form  if item.vars['name'] != '_token' and item.vars['name'] == 'address' or item.vars['name'] == 'factAddress' %}
                 <li>
                     <div>
-                        <div class="col-sm-2 control-label">
+                        <div class="col-sm-3 control-label">
                             <label class="pull-right" >
                                     {{ form_label(item) }}
                             </label>
