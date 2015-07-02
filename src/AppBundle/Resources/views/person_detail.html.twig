@@ -26,6 +26,7 @@
             </tr>
             <tr>
                 <th>Adresse</th>
+                <td>{{ include('AppBundle:Address:detailMin.html.twig' , { 'entity' : entity.address } ) }}</td>
             </tr>
             {% block person_additional_property -%}
             

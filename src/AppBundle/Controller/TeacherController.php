@@ -52,7 +52,6 @@ class TeacherController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
             return $this->redirect($this->generateUrl('teacher_show', array('id' => $entity->getId())));
         }
 
@@ -117,7 +116,8 @@ class TeacherController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
+        
+//dump($entity);
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),

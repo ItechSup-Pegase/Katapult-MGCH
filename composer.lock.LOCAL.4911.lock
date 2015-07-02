@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
     "hash": "2ef3355e9dd09be3378e0bd630a1024b",
-=======
-    "hash": "14b4f2050e764fb21fd7bf74ae5ae8b3",
->>>>>>> 1eda914d893710a4c3900d5ac3d5713e60d759ca
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -717,11 +713,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/3efbc08a97f218d0a4524dee926fc4381e3d0947",
-<<<<<<< HEAD
                 "reference": "3efbc08a97f218d0a4524dee926fc4381e3d0947",
-=======
-                "reference": "92d5624f2a29e74d8fd9d2a94d7ed7998a8c2809",
->>>>>>> 1eda914d893710a4c3900d5ac3d5713e60d759ca
                 "shasum": ""
             },
             "require": {
@@ -1451,7 +1443,6 @@
         },
         {
             "name": "symfony/symfony",
-<<<<<<< HEAD
             "version": "v2.7.1",
             "source": {
                 "type": "git",
@@ -1462,18 +1453,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/symfony/zipball/932b6e7499c670f4db6d0b871477a4a3ca161e74",
                 "reference": "932b6e7499c670f4db6d0b871477a4a3ca161e74",
-=======
-            "version": "v2.6.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/symfony.git",
-                "reference": "b06539573ccf64dd3a62852685f052553d02c5ba"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/b06539573ccf64dd3a62852685f052553d02c5ba",
-                "reference": "b06539573ccf64dd3a62852685f052553d02c5ba",
->>>>>>> 1eda914d893710a4c3900d5ac3d5713e60d759ca
                 "shasum": ""
             },
             "require": {
@@ -1582,70 +1561,7 @@
             "keywords": [
                 "framework"
             ],
-<<<<<<< HEAD
             "time": "2015-06-11 21:15:28"
-=======
-            "time": "2015-05-29 22:55:07"
-        },
-        {
-            "name": "symfony/var-dumper",
-            "version": "v2.7.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "c509921f260353bf07b257f84017777c8b0aa4bc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/c509921f260353bf07b257f84017777c8b0aa4bc",
-                "reference": "c509921f260353bf07b257f84017777c8b0aa4bc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "~2.7"
-            },
-            "suggest": {
-                "ext-symfony_debug": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.7-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "Resources/functions/dump.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Component\\VarDumper\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony mechanism for exploring and dumping PHP variables",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "debug",
-                "dump"
-            ],
-            "time": "2015-06-08 09:37:21"
->>>>>>> 1eda914d893710a4c3900d5ac3d5713e60d759ca
         },
         {
             "name": "twig/extensions",

@@ -4,7 +4,7 @@
     <h1><span class="glyphicon glyphicon-education" aria-hidden=""true"></span> Student Creation</h1>
     {{ form_start(form) }}
         <div class="form-horizontal">
-            {% for item in form  if item.vars['name'] != '_token' %}
+            {% for item in form  if item.vars['name'] != '_token'  and item.vars['name'] != 'addresses' %}
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         {{ form_label(item) }}
@@ -14,18 +14,42 @@
                     </div>
                 </div>
             {% endfor %}
-            <div class ="form-group">
-                <div class='line-bottom col-sm-2'>
-                        <a href="{{ path('student') }}">
-                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
-                        </a>
+            {% for item in form  if item.vars['name'] != '_token' and item.vars['name'] == 'addresses' %}
+                <div>
+                    <div class="col-sm-2 control-label">
+                        <label class="pull-right" >
+                                {{ form_label(item) }}
+                        </label>
+                    </div>
+                    <div class ="col-sm-8">
+                        {{ form_start(item) }}
+                            {% for subitem in item  if subitem.vars['name'] != '_token' %}
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        {{ form_label(subitem) }}
+                                    </label>
+                                    <div>
+                                        {{ form_widget(subitem) }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {{ form_end(form) }}    
+                    </div>
                 </div>
-                <div class= "col-sm-10">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                </div>
-            </div>
+            {% endfor %}
+            <div class="form-horizontal">
+                <div class ="form-group">
+                    <div class='line-bottom col-sm-2'>
+                            <a href="{{ path('student') }}">
+                                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+                            </a>
+                    </div>
+                    <div class= "col-sm-10">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </div> 
             {{ form_widget(form._token) }}
-        </div>    
+            </div>    
     {{ form_end(form) }}
 {% endblock %}
 

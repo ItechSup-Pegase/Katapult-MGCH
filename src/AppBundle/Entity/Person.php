@@ -21,52 +21,52 @@ abstract class Person
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
      */
-    private $phone;
+    protected $phone;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255)
      */
-    private $mail;
+    protected $mail;
 
     /**
      * @var string
      *
      * @ORM\Column(name="sexe", type="string", length=255)
      */
-    private $sexe;
+    protected $sexe;
 
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="Address", mappedBy="person" )
+     * @ORM\OneToOne(targetEntity="Address", inversedBy="person", cascade={"persist"})
      */
-    private $addresses;
+    protected $address;
     
     public function __construct() {
-        $this->addresses = new ArrayCollection();
+
     } 
 
 
@@ -195,92 +195,28 @@ abstract class Person
         return $this->sexe;
     }
 
+    
+
     /**
-     * Set adresse
+     * Set address
      *
-     * @param string $adresse
+     * @param \AppBundle\Entity\Address $address
      * @return Person
      */
-    public function setAdresse($adresse)
+    public function setAddress(\AppBundle\Entity\Address $address)
     {
-        $this->adresse = $adresse;
-
+        $this->address = $address;
+        $address->setPerson($this);
         return $this;
     }
 
     /**
-     * Get adresse
-     *
-     * @return string 
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /**
-     * Add adresses
-     *
-     * @param \AppBundle\Entity\Address $adresses
-     * @return Person
-     */
-    public function addAdress(\AppBundle\Entity\Address $adresses)
-    {
-        $this->adresses[] = $adresses;
-
-        return $this;
-    }
-
-    /**
-     * Remove adresses
-     *
-     * @param \AppBundle\Entity\Address $adresses
-     */
-    public function removeAdress(\AppBundle\Entity\Address $adresses)
-    {
-        $this->adresses->removeElement($adresses);
-    }
-
-    /**
-     * Get adresses
+     * Get address
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAdresses()
+    public function getAddress()
     {
-        return $this->adresses;
-    }
-
-    /**
-     * Add addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     * @return Person
-     */
-    public function addAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses[] = $addresses;
-
-        return $this;
-    }
-
-    /**
-     * Remove addresses
-     *
-     * @param \AppBundle\Entity\Address $addresses
-     */
-    public function removeAddress(\AppBundle\Entity\Address $addresses)
-    {
-        $this->addresses->removeElement($addresses);
-    }
-
-    /**
-     * Get addresses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAddresses()
-    {
-        return $this->addresses;
+        return $this->address;
     }
 }

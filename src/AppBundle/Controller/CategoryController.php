@@ -13,7 +13,7 @@ use AppBundle\Form\CategoryType;
 /**
  * Category controller.
  *
- * @Route("/category")
+ * @Route("/formations")
  */
 class CategoryController extends Controller
 {
@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:Category')->findWithFormations();
+        $entities = $em->getRepository('AppBundle:Category')->findTopCategories();
         return array(
             'entities' => $entities,
         );

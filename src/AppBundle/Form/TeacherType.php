@@ -10,7 +10,7 @@ class TeacherType extends AbstractType
 {
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -22,9 +22,7 @@ class TeacherType extends AbstractType
             ->add('phone')
             ->add('mail')
             ->add('sexe')
-            
-            
-        ;
+            ->add('address',  new AddressType(), array('data_class' => 'AppBundle\Entity\Address'));
     }
     
     

@@ -14,21 +14,13 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Client extends Person
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+   /**
+     * @var Address
+     * 
+     * @ORM\OneToOne(targetEntity="Address", mappedBy="client")
+     * 
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="factAdr", type="string", length=255)
-     */
-    private $factAdr;
+    private $factAddress;
 
     /**
      * @var string
@@ -42,59 +34,21 @@ class Client extends Person
      * @var type 
      * 
      * @ORM\OneToMany(targetEntity="Student" , mappedBy="client")
+     * 
      */
     private $students;
     
-      
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Address", mappedBy="client" )
-     */
-    private $addresses;
+ 
     
     
     public function __construct() {
-        $this->addresses = new ArrayCollection();
+        
+        parent::__construct();
         $this->students = new ArrayCollection();
     
     }
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return parent::getId();
-    }
-
-    /**
-     * Set factAdr
-     *
-     * @param string $factAdr
-     * @return Client
-     */
-    public function setFactAdr($factAdr)
-    {
-        $this->factAdr = $factAdr;
-
-        return $this;
-    }
-
-    /**
-     * Get factAdr
-     *
-     * @return string 
-     */
-    public function getFactAdr()
-    {
-        return $this->factAdr;
-    }
-
-    /**
+   /**
      * Set entreprise
      *
      * @param string $entreprise
@@ -150,38 +104,26 @@ class Client extends Person
         return $this->students;
     }
 
-    
-
     /**
-     * Add addresses
+     * Set factAddress
      *
-     * @param \AppBundle\Entity\Address $addresses
+     * @param \AppBundle\Entity\Address $factAddress
      * @return Client
      */
-    public function addAddress(\AppBundle\Entity\Address $addresses)
+    public function setFactAddress(\AppBundle\Entity\Address $factAddress = null)
     {
-        $this->addresses[] = $addresses;
+        $this->factAddress = $factAddress;
 
         return $this;
     }
 
     /**
-     * Remove addresses
+     * Get factAddress
      *
-     * @param \AppBundle\Entity\Address $addresses
+     * @return \AppBundle\Entity\Address 
      */
-    public function removeAddress(\AppBundle\Entity\Address $addresses)
+    public function getFactAddress()
     {
-        $this->addresses->removeElement($addresses);
-    }
-
-    /**
-     * Get addresses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAddresses()
-    {
-        return $this->addresses;
+        return $this->factAddress;
     }
 }

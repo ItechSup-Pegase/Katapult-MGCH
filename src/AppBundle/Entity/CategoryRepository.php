@@ -12,14 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
-    public function findWithFormations() {
+    public function findTopCategories() {
         
         $query = $this->getEntityManager()
         ->createQuery(
             'SELECT c, s, f 
             FROM AppBundle:Category c
-            JOIN c.sons s
-            JOIN s.formations f
+            LEFT JOIN c.sons s
+            LEFT JOIN s.formations f
             WHERE c.parent IS NULL'
         );
         return $query->getResult();
