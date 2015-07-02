@@ -5,7 +5,7 @@
 
     {{ form_start(form) }}
         <div class="form-horizontal">
-            {% for item in form  if item.vars['name'] != '_token' and item.vars['name'] != 'address' %}
+            {% for item in form  if item.vars['name'] != '_token' and item.vars['name'] != 'address' and item.vars['name'] != 'factAddress' %}
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         {{ form_label(item) }}
@@ -16,35 +16,39 @@
                 </div>
             {% endfor %}
         </div>   
-        <div class="address">
-            {% for item in form  if item.vars['name'] != '_token' and item.vars['name'] == 'address' %}
-                <div>
-                    <div class="col-sm-2 control-label">
-                        <label class="pull-right" >
-                                {{ form_label(item) }}
-                        </label>
-                    </div>
-                    <div class ="col-sm-8">
-                        {{ form_start(item) }}
-                            {% for subitem in item  if subitem.vars['name'] != '_token' %}
-                                <div class="form-group form-group-sm">
-                                    <label class="control-label">
-                                        {{ form_label(subitem) }}
-                                    </label>
-                                    <div>
-                                        {{ form_widget(subitem) }}
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        {{ form_end(item) }}    
-                    </div>
-                </div>
+        <div class="address2">
+            <ul class="list-inline">
+            {% for item in form  if item.vars['name'] != '_token' and item.vars['name'] == 'address' or item.vars['name'] == 'factAddress' %}
                 
+                <li>
+                    <div>
+                        <div class="col-sm-3 control-label">
+                            <label class="pull-right" >
+                                    {{ form_label(item) }}
+                            </label>
+                        </div>
+                        <div class ="col-sm-8">
+                            {{ form_start(item) }}
+                                {% for subitem in item  if subitem.vars['name'] != '_token' %}
+                                    <div class="form-group form-group-sm">
+                                        <label class="control-label">
+                                            {{ form_label(subitem) }}
+                                        </label>
+                                        <div>
+                                            {{ form_widget(subitem) }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {{ form_end(item) }}    
+                        </div>
+                    </div>
+                </li>
             {% endfor %}
+            </ul>
         {{ form_widget(form._token) }}
             
       
-                <div class="col-sm-7 div-button">
+                <div class="col-sm-10 div-button">
                     <a href="{{ path('client') }}">
                         <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
                     </a>
