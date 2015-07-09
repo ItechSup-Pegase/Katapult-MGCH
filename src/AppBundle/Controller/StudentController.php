@@ -29,7 +29,7 @@ class StudentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:Student')->findAll();
+        $entities = $em->getRepository('AppBundle:Student')->findBy(array(), array('firstName' => 'ASC'));
 
         return array(
             'entities' => $entities,

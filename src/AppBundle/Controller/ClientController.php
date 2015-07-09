@@ -29,7 +29,7 @@ class ClientController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:Client')->findAll();
+        $entities = $em->getRepository('AppBundle:Client')->findBy(array(), array('firstName' => 'ASC'));
 
         return array(
             'entities' => $entities,

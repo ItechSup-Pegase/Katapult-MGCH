@@ -1,5 +1,4 @@
-- Authentification/Inscription (Pas d'inscription)
-- Trier éléments dans les listes (date, nom)
+- Gestion des rôles (authent)
 - Gestion compétences profs
 - Inscrire étudiants à une formation
 - Lister étudiants d'une session
