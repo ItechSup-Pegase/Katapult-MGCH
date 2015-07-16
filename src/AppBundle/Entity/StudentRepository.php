@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class StudentRepository extends EntityRepository
 {
+    public function findNotInEvent($id)
+    {
+       $query = $this->getEntityManager()
+        ->createQuery(
+            'SELECT s
+            FROM AppBundle:Student s
+            JOIN s.events e
+            WHERE e.id <> :id'
+        )->setParameter('id', $id);
+
+        return $query->getResult();
+   }
 }

@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Event;
 use AppBundle\Form\EventType;
+//use AppBundle\Entity\Student;
 
 /**
  * Event controller.
@@ -242,5 +243,31 @@ class EventController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    
+    /**
+     * Displays a form to Add Student.
+     *
+     * @Route("/{id}/addStudent", name="event_addStudent")
+     * @Method("GET")
+     * @Template()
+     */
+    public function addStudentAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $entity = $em->getRepository('AppBundle:Event')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Event entity.');
+        }
+        $students = $em->getRepository('AppBundle:Student')->findNotInEvent($id);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return array(
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),
+            'students' => $students,
+        );
     }
 }

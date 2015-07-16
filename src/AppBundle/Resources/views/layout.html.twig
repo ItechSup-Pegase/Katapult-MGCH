@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{{ asset("/bundles/app/css/template.css") }}">
 <link rel="stylesheet" href="{{ asset("/bundles/app/css/style.css") }}">
 <link rel="stylesheet" href="{{ asset("/bundles/app/css/datepicker.css") }}">
-
+<link rel="stylesheet" href="{{ asset("/bundles/app/css/multi-select.css") }}">
 
 
 
@@ -92,6 +92,8 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Multi-Select -->
+    <script src="{{ asset("/bundles/app/js/jquery.multi-select.js") }} "></script>
     <!-- Javascript pour DatePicker-->
     <script type="text/javascript" src="{{ asset('bundles/app/js/bootstrap-datepicker.js') }}"></script>
     <script type="text/javascript"> 
@@ -106,5 +108,6 @@
        }).on('changeDate',function(){
            $(".datepicker").datepicker('hide')
        });
+       $('#keep-order').multiSelect({ keepOrder: true });
     </script> 
 {% endblock %}
