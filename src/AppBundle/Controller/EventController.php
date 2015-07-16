@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Event;
 use AppBundle\Form\EventType;
-//use AppBundle\Entity\Student;
+
 
 /**
  * Event controller.
@@ -248,7 +248,7 @@ class EventController extends Controller
     /**
      * Displays a form to Add Student.
      *
-     * @Route("/{id}/addStudent", name="event_addStudent")
+     * @Route("/{id}/addStudent", name="event_add_student")
      * @Method("GET")
      * @Template()
      */

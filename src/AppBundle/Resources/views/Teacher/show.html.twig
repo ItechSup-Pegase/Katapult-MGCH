@@ -6,7 +6,10 @@
 
 
 <div class='col-sm-3 line-bottom'>
-        <a href="{{ path('teacher') }}">
+    <a href="{{path('teacher_add_formation', { 'id': entity.id }) }} ">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Formation
+    </a>    
+    <a href="{{ path('teacher') }}">
             <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to the list
         </a>
     </div>

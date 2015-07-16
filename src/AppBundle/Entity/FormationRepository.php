@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class FormationRepository extends EntityRepository
 {
+    
+    public function findWhithoutTeacher($id)
+    {
+       $query = $this->getEntityManager()
+        ->createQuery(
+            'SELECT f
+            FROM AppBundle:Formation f
+            LEFT OUTER JOIN f.teachers t 
+            WHERE ( t.id IS NULL OR t.id <> :id)'
+        )->setParameter('id', $id);
+
+            
+        return $query->getResult();
+   }
 }

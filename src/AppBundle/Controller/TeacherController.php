@@ -1,4 +1,4 @@
-<?php
+<?php //
 
 namespace AppBundle\Controller;
 
@@ -242,5 +242,31 @@ class TeacherController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    
+     /**
+     * Displays a form to Add Formation.
+     *
+     * @Route("/{id}/addFormationTeacher", name="teacher_add_formation")
+     * @Method("GET")
+     * @Template()
+     */
+    public function addFormationTeacherAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $entity = $em->getRepository('AppBundle:Teacher')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Teacher entity.');
+        }
+        $formations= $em->getRepository('AppBundle:Formation')->findWhithoutTeacher($id);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return array(
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),
+            'formations' => $formations,
+        );
     }
 }

@@ -1,0 +1,45 @@
+{% extends "AppBundle:Teacher:layout.html.twig" %}
+
+{% block content -%}
+    <h1>Ajout Formation</h1>
+        
+    <table class="table table-striped ">
+        <tbody>
+            {#<tr>
+                <th>Date</th>
+                <td>{{ entity.date | date('d-M-Y') }}</td>
+            </tr>
+            <tr>
+                <th>Formation</th>
+                <td>{{ entity.formation.name }}</td>
+            </tr>
+            <tr>
+                <th>Professeur</th>
+                <td>{{ entity.teacher.firstName }}</td>
+            </tr> #}           
+        </tbody>
+    </table>
+     <select id='keep-order' multiple='multiple'>
+        {% for formation in formations %}
+            <option value='{{ formation.id }}' selection> {{ formation.name }} </option>
+        {% endfor %}
+        {% for formationSelected in entity.formations %}
+            <option value='{{ formationSelected.id }}' selected> {{ formationSelected.name }} </option>
+        {% endfor %}
+    </select>
+
+    <button type="button" class="btn btn-primary">            
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Ajout
+    </button>        
+
+            
+    <div class='col-sm-3 line-bottom'>
+        <a href="{{ path('teacher') }}">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to the list
+        </a>
+    </div>
+       
+{% endblock %}
+
+{%block column_list%}{%endblock%}
+{%block column_add%}{%endblock%}
