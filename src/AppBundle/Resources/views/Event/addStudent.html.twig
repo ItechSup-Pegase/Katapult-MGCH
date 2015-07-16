@@ -19,17 +19,20 @@
             </tr>            
         </tbody>
     </table>
-            
-    <select id='keep-order' multiple='multiple'>
-        {% for student in students %}
-            <option value='{{ student.id }}' selection> {{ student.firstName }} </option>
-        {% endfor %}
-        {% for studentSelected in entity.students %}
-            <option value='{{ studentSelected.id }}' selected> {{ studentSelected.firstName }} </option>
-        {% endfor %}
-    </select>
-            
-            
+            <form action ="{{ path('event') }}" name= "validAddStudent" method = "post">        
+                <select id='keep-order' multiple='multiple'>
+                    {% for student in students %}
+                        <option value='{{ student.id }}' selection> {{ student.firstName }} </option>
+                    {% endfor %}
+                    {% for studentSelected in entity.students %}
+                        <option value='{{ studentSelected.id }}' selected> {{ studentSelected.firstName }} </option>
+                    {% endfor %}
+                </select>
+    
+                <button type="button" class="btn btn-primary">            
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Ajout
+                </button>        
+            </form>
             
     <div class='col-sm-3 line-bottom'>
         <a href="{{ path('event') }}">

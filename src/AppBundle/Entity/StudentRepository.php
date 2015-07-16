@@ -18,10 +18,11 @@ class StudentRepository extends EntityRepository
         ->createQuery(
             'SELECT s
             FROM AppBundle:Student s
-            JOIN s.events e
-            WHERE e.id <> :id'
+            LEFT OUTER JOIN s.events e 
+            WHERE ( e.id IS NULL OR e.id <> :id)'
         )->setParameter('id', $id);
 
+            
         return $query->getResult();
    }
 }
