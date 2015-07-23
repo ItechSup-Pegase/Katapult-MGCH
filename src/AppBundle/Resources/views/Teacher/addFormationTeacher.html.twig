@@ -19,19 +19,20 @@
             </tr> #}           
         </tbody>
     </table>
-     <select id='keep-order' multiple='multiple'>
-        {% for formation in formations %}
-            <option value='{{ formation.id }}' selection> {{ formation.name }} </option>
-        {% endfor %}
-        {% for formationSelected in entity.formations %}
-            <option value='{{ formationSelected.id }}' selected> {{ formationSelected.name }} </option>
-        {% endfor %}
-    </select>
+    <form id='myform'  method='POST' action =' {{ path('teacher_save_formation', {'id': entity.id }) }} '>
+        <select id='keep-order' multiple='multiple' name='competences[]'>
+            {% for formation in formations %}
+                <option value='{{ formation.id }}'> {{ formation.name }} </option>
+            {% endfor %}
+            {% for formationSelected in entity.formations %}
+                <option value='{{ formationSelected.id }}' selected> {{ formationSelected.name }} </option>
+            {% endfor %}
+        </select>
 
-    <button type="button" class="btn btn-primary">            
-        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Ajout
-    </button>        
-
+        <button type="submit" class="btn btn-primary">            
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Ajout
+        </button>        
+    </form>
             
     <div class='col-sm-3 line-bottom'>
         <a href="{{ path('teacher') }}">

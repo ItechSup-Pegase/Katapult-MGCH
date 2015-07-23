@@ -269,4 +269,59 @@ class TeacherController extends Controller
             'formations' => $formations,
         );
     }
+    
+    
+    /**
+     * Displays a form to Save Formation.
+     *
+     * @Route("/{id}/addFormationTeacher", name="teacher_save_formation")
+     * @Method("POST")
+     * @Template("AppBundle:Teacher:addFormationTeacher.html.twig")
+     */
+    public function saveFormationTeacherAction(Request $request , $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('AppBundle:Teacher')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Teacher entity.');
+        }        
+        
+        //boucle de suppresion
+        foreach ($entity->getFormations() as $formation){
+            
+            if ( !in_array($formation->getId(), $request->get('competences', []))){
+        
+                 $formation->removeTeacher($entity);
+            }
+        }
+        
+        
+        
+        //boucle d'ajout    
+        foreach ($request->get('competences', [])as $competenceId){
+            
+            $entityCompetence = $em->getRepository('AppBundle:Formation')->find($competenceId);
+            
+            if (!$entityCompetence) {
+                throw $this->createNotFoundException('Unable to find Formation entity.');
+            }
+            
+                        
+            if (!$entity->getFormations()->contains($entityCompetence)) {
+                $entityCompetence->addTeacher($entity);
+            }
+            
+            
+                      
+        } 
+        
+
+        
+        $em->flush();
+        
+
+        return $this->redirect($this->generateUrl('teacher')); 
+        
+    }
 }

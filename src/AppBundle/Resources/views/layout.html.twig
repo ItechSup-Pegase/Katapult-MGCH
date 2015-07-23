@@ -108,6 +108,15 @@
        }).on('changeDate',function(){
            $(".datepicker").datepicker('hide')
        });
+       
+       //Multiselect
        $('#keep-order').multiSelect({ keepOrder: true });
+       {#
+       var tabs = [];
+       console.log(tabs);
+       $('#myform').submit(function() {
+        tabs =  $("select").multiselect("selected");
+        console.log(tabs);
+        });#}
     </script> 
 {% endblock %}

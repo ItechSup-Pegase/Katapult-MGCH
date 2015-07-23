@@ -1,4 +1,4 @@
-- Gestion compétences profs
+- Afficher les compétences des profs dans Show
 - Inscrire étudiants à une formation
 - Lister étudiants d'une session
 
@@ -8,4 +8,5 @@
 ///////////////////////////////
 
 - Trier les événements par périodes (réalisé, en cours , futur)
-- Changer l'odre des Tabulations
+- Changer l'ordre des Tabulations
+- Afficher les catégories au dessus des formations à ajouter aux Profs.
